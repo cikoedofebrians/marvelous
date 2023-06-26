@@ -9,21 +9,26 @@
 /* Begin PBXBuildFile section */
 		BFA8A81C2A4A138E006B9FCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8A81B2A4A138E006B9FCF /* AppDelegate.swift */; };
 		BFA8A81E2A4A138F006B9FCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8A81D2A4A138F006B9FCF /* SceneDelegate.swift */; };
-		BFA8A8202A4A138F006B9FCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8A81F2A4A138F006B9FCF /* ViewController.swift */; };
-		BFA8A8232A4A138F006B9FCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA8A8212A4A138F006B9FCF /* Main.storyboard */; };
 		BFA8A8252A4A1390006B9FCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFA8A8242A4A1390006B9FCF /* Assets.xcassets */; };
 		BFA8A8282A4A1390006B9FCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA8A8262A4A1390006B9FCF /* LaunchScreen.storyboard */; };
+		BFA8A8302A4A1431006B9FCF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8A82F2A4A1431006B9FCF /* HomeViewController.swift */; };
+		BFA8A8332A4A14CA006B9FCF /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8A8322A4A14CA006B9FCF /* Character.swift */; };
+		BFA8A8392A4A1596006B9FCF /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = BFA8A8382A4A1596006B9FCF /* CollectionViewPagingLayout */; };
+		BFA8A83B2A4A169E006B9FCF /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8A83A2A4A169E006B9FCF /* MyCell.swift */; };
+		BFA8A83D2A4A1771006B9FCF /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8A83C2A4A1771006B9FCF /* CharacterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BFA8A8182A4A138E006B9FCF /* marvelous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA8A81B2A4A138E006B9FCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFA8A81D2A4A138F006B9FCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BFA8A81F2A4A138F006B9FCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BFA8A8222A4A138F006B9FCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFA8A8242A4A1390006B9FCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFA8A8272A4A1390006B9FCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFA8A8292A4A1390006B9FCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFA8A82F2A4A1431006B9FCF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BFA8A8322A4A14CA006B9FCF /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		BFA8A83A2A4A169E006B9FCF /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		BFA8A83C2A4A1771006B9FCF /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFA8A8392A4A1596006B9FCF /* CollectionViewPagingLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +62,49 @@
 		BFA8A81A2A4A138E006B9FCF /* marvelous */ = {
 			isa = PBXGroup;
 			children = (
-				BFA8A81B2A4A138E006B9FCF /* AppDelegate.swift */,
-				BFA8A81D2A4A138F006B9FCF /* SceneDelegate.swift */,
-				BFA8A81F2A4A138F006B9FCF /* ViewController.swift */,
-				BFA8A8212A4A138F006B9FCF /* Main.storyboard */,
+				BFA8A8342A4A14D8006B9FCF /* Models */,
+				BFA8A8312A4A14A2006B9FCF /* Resources */,
 				BFA8A8242A4A1390006B9FCF /* Assets.xcassets */,
 				BFA8A8262A4A1390006B9FCF /* LaunchScreen.storyboard */,
 				BFA8A8292A4A1390006B9FCF /* Info.plist */,
+				BFA8A8362A4A14F6006B9FCF /* Controllers */,
+				BFA8A8352A4A14E9006B9FCF /* Views */,
 			);
 			path = marvelous;
+			sourceTree = "<group>";
+		};
+		BFA8A8312A4A14A2006B9FCF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BFA8A81B2A4A138E006B9FCF /* AppDelegate.swift */,
+				BFA8A81D2A4A138F006B9FCF /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BFA8A8342A4A14D8006B9FCF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFA8A8322A4A14CA006B9FCF /* Character.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BFA8A8352A4A14E9006B9FCF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFA8A83A2A4A169E006B9FCF /* MyCell.swift */,
+				BFA8A83C2A4A1771006B9FCF /* CharacterView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BFA8A8362A4A14F6006B9FCF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BFA8A82F2A4A1431006B9FCF /* HomeViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +123,9 @@
 			dependencies = (
 			);
 			name = marvelous;
+			packageProductDependencies = (
+				BFA8A8382A4A1596006B9FCF /* CollectionViewPagingLayout */,
+			);
 			productName = marvelous;
 			productReference = BFA8A8182A4A138E006B9FCF /* marvelous.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +154,9 @@
 				Base,
 			);
 			mainGroup = BFA8A80F2A4A138E006B9FCF;
+			packageReferences = (
+				BFA8A8372A4A1596006B9FCF /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
+			);
 			productRefGroup = BFA8A8192A4A138E006B9FCF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +173,6 @@
 			files = (
 				BFA8A8282A4A1390006B9FCF /* LaunchScreen.storyboard in Resources */,
 				BFA8A8252A4A1390006B9FCF /* Assets.xcassets in Resources */,
-				BFA8A8232A4A138F006B9FCF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +183,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFA8A8202A4A138F006B9FCF /* ViewController.swift in Sources */,
+				BFA8A83D2A4A1771006B9FCF /* CharacterView.swift in Sources */,
 				BFA8A81C2A4A138E006B9FCF /* AppDelegate.swift in Sources */,
+				BFA8A83B2A4A169E006B9FCF /* MyCell.swift in Sources */,
 				BFA8A81E2A4A138F006B9FCF /* SceneDelegate.swift in Sources */,
+				BFA8A8302A4A1431006B9FCF /* HomeViewController.swift in Sources */,
+				BFA8A8332A4A14CA006B9FCF /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BFA8A8212A4A138F006B9FCF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFA8A8222A4A138F006B9FCF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BFA8A8262A4A1390006B9FCF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +332,6 @@
 				INFOPLIST_FILE = marvelous/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +359,6 @@
 				INFOPLIST_FILE = marvelous/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BFA8A8372A4A1596006B9FCF /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amirdew/CollectionViewPagingLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BFA8A8382A4A1596006B9FCF /* CollectionViewPagingLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFA8A8372A4A1596006B9FCF /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */;
+			productName = CollectionViewPagingLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFA8A8102A4A138E006B9FCF /* Project object */;
 }
