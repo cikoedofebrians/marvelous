@@ -22,12 +22,9 @@ struct APICaller {
                 return
             }
             do {
-                print("it successfully go here")
-//                print( try JSONSerialization.jsonObject(with: data))
                 let results = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(results))
             } catch {
-                print("kontol")
                 completion(.failure(APIError.failedToGetData))
             }
         }
@@ -36,7 +33,6 @@ struct APICaller {
     
     func getCharactersData(offset:Int ,completion: @escaping (Result<[Character], Error>) -> Void){
         guard let url = URL(string: "\(K.marvelBaseUrl)characters\(Formatter.getHashedQuery())&limit=50&offset=\(offset)") else {return}
-        print(url)
         fetchData(from: url) { (result: Result<CharacterResponse, Error>) in
             switch result {
             case .success(let characters):
@@ -44,23 +40,18 @@ struct APICaller {
             case .failure(let error):
                 completion(.failure(error))
             }
-        
         }
-        
+    }
+    
+    func searchCharacters(query: String, completion: @escaping (Result<[Character], Error>) -> Void){
+        guard let url = URL(string: "\(K.marvelBaseUrl)characters\(Formatter.getHashedQuery())&limit=20&nameStartsWith=\(query)") else {return}
+        fetchData(from: url) { (result: Result<CharacterResponse, Error>) in
+            switch result {
+            case .success(let characters):
+                completion(.success(characters.data.results))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
-
-
-
-//
-//func getTrendingMovies(completion: @escaping (Result<[Title], Error>) -> Void){
-//    guard let url = URL(string: "\(Constant.baseUrl)/3/trending/movie/day?api_key=\(Constant.tmdbAPIKey)") else {return}
-//    fetchData(from: url) { (result: Result<TitleResponse, Error>) in
-//        switch result {
-//        case .success(let titles):
-//            completion(.success(titles.results))
-//        case .failure(_):
-//            completion(.failure(APIError.failedToGetData))
-//        }
-//    }
-//}

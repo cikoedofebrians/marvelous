@@ -10,6 +10,6 @@ import Foundation
 
 struct K {
     static let publicKey = "XXX"
-    static let privateKey = "XXXXX"
+    static let privateKey = "XXX"
     static let marvelBaseUrl = "https://gateway.marvel.com/v1/public/"
 }

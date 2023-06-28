@@ -11,7 +11,7 @@ class CharacterDetailsViewController: UIViewController {
     
     let characterView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleToFill
+        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -20,9 +20,26 @@ class CharacterDetailsViewController: UIViewController {
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.sizeToFit()
+        label.lineBreakMode = .byWordWrapping
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.numberOfLines = 0
         return label
+    }()
+    
+    let contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.showsVerticalScrollIndicator = true
+        view.isDirectionalLockEnabled = true
+        view.showsHorizontalScrollIndicator = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     var characterNameView: CharacterNameView = {
@@ -43,32 +60,45 @@ class CharacterDetailsViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        view.addSubview(characterView)
-        view.addSubview(readButton)
-        view.addSubview(characterNameView)
-        view.addSubview(descriptionLabel)
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.tintColor = UIColor.label
-        configureConstraint()
-
+        configureUI()
+        configureContent()
     }
     
-    func configureButtonFunction(){
-   
+    func configureUI() {
+        view.addSubview(scrollView)
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
+        scrollView.addSubview(contentView)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
+        ])
     }
-//    
-//    override func viewDidLayoutSubviews() {
-//
-//    }
-//    
     
-    func configureConstraint() {
+    
+    func configureContent() {
+        view.addSubview(readButton)
+        contentView.addSubview(characterView)
+        contentView.addSubview(characterNameView)
+        contentView.addSubview(descriptionLabel)
+        
         let characterViewConstraint =
         [
-            characterView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            characterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            characterView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            characterView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            characterView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            characterView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             characterView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width),
         ]
         
@@ -80,17 +110,18 @@ class CharacterDetailsViewController: UIViewController {
         ]
 
         let characterNameViewConstraint = [
-            characterNameView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            characterNameView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            characterNameView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            characterNameView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             characterNameView.topAnchor.constraint(equalTo: characterView.bottomAnchor)
         ]
-        
+
         let descriptionLabelConstraint = [
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            descriptionLabel.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor, constant: -20),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -80),
             descriptionLabel.topAnchor.constraint(equalTo: characterNameView.bottomAnchor, constant: 20),
         ]
-        
+
         NSLayoutConstraint.activate(characterViewConstraint)
         NSLayoutConstraint.activate(readButtonConstraint)
         NSLayoutConstraint.activate(characterNameViewConstraint)
@@ -110,7 +141,7 @@ class CharacterDetailsViewController: UIViewController {
                 vc.url = comicURL
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
-         }), for: .primaryActionTriggered)
+        }), for: .primaryActionTriggered)
     }
     
     

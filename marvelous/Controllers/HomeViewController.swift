@@ -20,7 +20,7 @@ class HomeViewController: UIViewController{
         return button
     }()
     
-    func fetchData(){
+    func fetchData() {
         APICaller.shared.getCharactersData (offset: currentOffset) { result in
             switch result {
             case .success(let characterData):
@@ -96,7 +96,7 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
         fetchData()
         collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
     }
-    
+            
     private func setupCollectionView() {
         let layout = CollectionViewPagingLayout()
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)

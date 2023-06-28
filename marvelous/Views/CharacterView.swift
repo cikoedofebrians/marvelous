@@ -43,9 +43,7 @@ class CharacterView: UIView {
     
     let button: UIButton = {
         let button = UIButton()
-  
         button.translatesAutoresizingMaskIntoConstraints = false
-    
         return button
     }()
     
@@ -66,7 +64,6 @@ class CharacterView: UIView {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
-   
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
@@ -78,6 +75,7 @@ class CharacterView: UIView {
             overviewLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
             overviewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant:  20),
             overviewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            overviewLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -20),
         ])
         
     }

@@ -19,10 +19,14 @@ class TabBarViewController: UITabBarController {
         vc2.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         vc2.title = "Search"
         
+        let vc3 = UINavigationController(rootViewController: ProfileViewController())
+        vc3.tabBarItem.image = UIImage(systemName: "person")
+        vc3.title = "Profile"
+        
         
         
         tabBar.tintColor = .label
-        setViewControllers([vc1, vc2], animated: true)
+        setViewControllers([vc1, vc2, vc3], animated: true)
     }
     
 }

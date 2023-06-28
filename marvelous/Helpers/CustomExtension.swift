@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CryptoKit
 
 extension UIImageView {
     func makeRounded() {
@@ -19,6 +20,14 @@ extension UIImageView {
 }
 
 
+extension String {
+    func MD5() -> String {
+        let digest = Insecure.MD5.hash(data: Data(self.utf8))
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
+    }
+}
 
 extension UIColor {
     convenience init(hexString: String) {

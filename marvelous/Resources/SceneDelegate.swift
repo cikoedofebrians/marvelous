@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,9 +17,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = TabBarViewController()
         window?.makeKeyAndVisible()
+        checkAuthentication()
     }
+    
+    public func checkAuthentication() {
+         if Auth.auth().currentUser == nil {
+             self.goToController(with: LoginController())
+         } else {
+             self.goToController(with: TabBarViewController())
+         }
+     }
+     
+     private func goToController(with viewController: UIViewController) {
+         DispatchQueue.main.async { [weak self] in
+             UIView.animate(withDuration: 0.25) {
+                 self?.window?.layer.opacity = 0
+                 
+             } completion: { [weak self] _ in
+                 
+                 let nav = viewController
+                 nav.modalPresentationStyle = .fullScreen
+                 self?.window?.rootViewController = nav
+                 UIView.animate(withDuration: 0.25) { [weak self] in
+                     self?.window?.layer.opacity = 1
+                 }
+             }
+         }
+     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
