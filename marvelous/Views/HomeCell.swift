@@ -8,44 +8,38 @@
 import UIKit
 import CollectionViewPagingLayout
 
-class MyCell: UICollectionViewCell {
-    var card: UIView!
+class HomeCell: UICollectionViewCell {
+    
+    static let identifier = "HomeCell"
+    var card: CharacterView!
       
-      override init(frame: CGRect) {
+    override init(frame: CGRect) {
           super.init(frame: frame)
           setup()
-      }
-      
-      required init?(coder: NSCoder) {
-          super.init(coder: coder)
-          setup()
-      }
-      
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
       func setup() {
           card = CharacterView(frame: .zero)
           card.translatesAutoresizingMaskIntoConstraints = false
-
           contentView.addSubview(card)
-          
           NSLayoutConstraint.activate([
               card.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
               card.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-              card.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
-              card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -120),
+              card.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 140),
+              card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -240),
           ])
       }
+    func configure(with model: Character) {
+        card.configure(with: model)
+    }
 }
 
-extension MyCell: ScaleTransformView {
+extension HomeCell: ScaleTransformView {
     var scaleOptions: ScaleTransformViewOptions {
         .layout(.linear)
     }
 }
-
-
-//extension MyCell: TransformableView {
-//    func transform(progress: CGFloat) {
-//        let alpha = 1 - abs(progress)
-//        contentView.alpha = alpha
-//    }
-//}
